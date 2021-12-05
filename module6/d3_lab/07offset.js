@@ -1,4 +1,4 @@
-d3.csv('ue_industry.csv', data => {
+d3.csv('https://raw.githubusercontent.com/BDavidoff/CUNY_DATA_608/master/module6/d3_lab/ue_industry.csv', data => {
 
     const industries = ['Agriculture','Business services','Construction','Education and Health',
         'Finance','Government','Information','Leisure and hospitality','Manufacturing',
@@ -27,8 +27,9 @@ d3.csv('ue_industry.csv', data => {
         .range(colors);
 
     const stackLayout = d3.stack()
-        .keys(industries)
-        .offset(d3.stackOffsetSilhouette);
+        .keys(industries);
+		//Removing the offset seems to fix it
+       // .offset(d3.stackOffsetSilhouette);
         
     const stackArea = d3.area()
         .x((d, i) => xScale(i))
